@@ -1,0 +1,13 @@
+.today {
+    color: red;
+}
+
+.current-weather-Y {
+    transform: translateY(20%);
+    transition: all 0.5s linear;
+}
+
+.current-weather-0 {
+    transform: translateY(0);
+    transition: all 0.5s linear;
+}

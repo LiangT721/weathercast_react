@@ -1,0 +1,9 @@
+export const SET_CITYS_LIST_FORM = "cityManager/set_citys_list_form";
+export const CITY_INPUT_FOCUS = 'cityManager/city_input_focus';
+export const CITY_INPUT_BLUR = 'cityManager/city_input_blur';
+export const INPUT_CITY_CHANGE = 'cityManager/input_city_change';
+export const CITY_SEARCH_DISPLAY = 'cityManager/city_search_display';
+export const CITY_SELECT = 'cityManager/city_select';
+export const EDIT_CITYLIST_TRUE = 'edit_citylist_true';
+export const EDIT_CITYLIST_FALSE = 'edit_citylist_false';
+export const SET_DELET_CITY_LIST = 'set_delete_city_list';

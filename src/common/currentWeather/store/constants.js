@@ -1,0 +1,1 @@
+export const CHANGE_IF_TODAY = "currentWeather/change_if_today";

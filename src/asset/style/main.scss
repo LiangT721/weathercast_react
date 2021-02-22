@@ -1,0 +1,21 @@
+.box-shadow {
+    filter: drop-shadow(1px 1px 5px #615f5fd0);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px #ffffffd0;
+}
+
+.inline {
+    display: inline;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    &:hover {
+        color: black;
+    }
+}
+
+@import './bootstrap-5.0.0-beta1/scss/bootstrap.scss'

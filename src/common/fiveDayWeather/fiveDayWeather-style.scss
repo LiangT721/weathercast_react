@@ -1,0 +1,49 @@
+.five-day-frame {
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+}
+
+.frame {
+    height: 30vw;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.383);
+}
+
+.weather-icon {
+    width: 13vw;
+    object-fit: contain;
+    z-index: 10;
+}
+
+.detail-frame {
+    background-color: rgb(255, 255, 255);
+}
+
+.icon-0 {
+    transform: translateY(0);
+    transition: all 0.5s linear;
+}
+
+.icon-Y {
+    transform: translateY(50%);
+    transition: all 0.5s linear;
+}
+
+.detail-0 {
+    transform: translateY(0);
+    transition: all 0.5s linear;
+}
+
+.detail-Y {
+    transform: translateY(100%);
+    transition: all 0.5s linear;
+}
+
+.line-bottom {
+    border-bottom: #d1d1d1 1px solid;
+}
+
+.line-right {
+    border-right: #d1d1d1 1px solid;
+}
