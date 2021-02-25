@@ -24,12 +24,21 @@ export const setCurrentWeather = (data) => ({
 export const loadingCookiesCityList = () => {
     return (dispatch) => {
         const state = store.getState();
-        let cityList = state.getIn(['location',"default_city_list"]).toJS()
+        let cityList = cookie.load("cityList");
         console.log(cityList)
-        if (cookie.load("cityList") != "undefined"){
-            console.log(cookie.load("cityList"))
-            cityList = cookie.load("cityList")
+        if (cityList == undefined){
+            cityList = state.getIn(['location',"default_city_list"]).toJS()
+        } else {
+            dispatch(locationActionCreators.saveCityList(cityList))
         }
+
+        // const state = store.getState();
+        // let cityList = state.getIn(['location',"default_city_list"]).toJS()
+        // console.log(cityList)
+        // if (cookie.load("cityList") != "undefined"){
+        //     console.log(cookie.load("cityList"))
+        //     cityList = cookie.load("cityList")
+        // }
         console.log(cityList)
         console.log(cityList[0])
         const defaultCity = cityList[0];
@@ -39,7 +48,7 @@ export const loadingCookiesCityList = () => {
         if(home_display_city === "city"){
             dispatch(setDefaultCity(defaultCity))
         }
-        dispatch(locationActionCreators.saveCityList(cityList));}
+        }
 }
 
 export const settingCurrentWeather = (data) => {

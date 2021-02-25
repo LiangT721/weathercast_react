@@ -39,7 +39,13 @@ export const editListFalse = () => ({
 
 export const getCityListWithWeather = () => {
     return (dispatch) => {
-        const data = cookie.load("cityList")
+        const state = store.getState();
+        let data = cookie.load("cityList");
+        if (data == undefined){
+            data = state.getIn(['location',"default_city_list"]).toJS()
+        } else {
+            dispatch(locationActionCreactors.saveCityList(data))
+        }
         for (let i = 0; i < data.length; i++) {
             const city = data[i];
             const lat = city.geometry.lat;
@@ -117,6 +123,7 @@ export const addDeletCity = (city) => {
 
 export const confirmDeleteCity = () => {
     return (dispatch) => {
+        dispatch(editListFalse())
         const state = store.getState();
         const deleteCityList = state.getIn(['cityManage', 'deleteCityList']).toJS();
         let city_list_form = state.getIn(['cityManage', 'citys_list_form']).toJS()
