@@ -3,6 +3,8 @@ import axios from 'axios';
 import { actionCreators as locationActionCreators } from '../../../common/location/store';
 import { fromJS } from "immutable";
 import store from '../../../store'
+import cookie from 'react-cookies'
+
 
 export const setDefaultCityName = (cityName) => ({
     type: actionTypes.SET_DEFAULT_CITY_NAME,
@@ -19,17 +21,25 @@ export const setCurrentWeather = (data) => ({
     data: fromJS(data),
 })
 
-export const loadingCookiesCityList = (cityList) => {
+export const loadingCookiesCityList = () => {
     return (dispatch) => {
-        dispatch(locationActionCreators.saveCityList(cityList));
-        const defaultCity = cityList[0];
         const state = store.getState();
+        let cityList = state.getIn(['location',"default_city_list"]).toJS()
+        console.log(cityList)
+        if (cookie.load("cityList") != "undefined"){
+            console.log(cookie.load("cityList"))
+            cityList = cookie.load("cityList")
+        }
+        console.log(cityList)
+        console.log(cityList[0])
+        const defaultCity = cityList[0];
         const home_display_city = state.getIn(['homepage', 'home_display_city'])
         console.log(home_display_city)
+        console.log(defaultCity)
         if(home_display_city === "city"){
             dispatch(setDefaultCity(defaultCity))
         }
-    }
+        dispatch(locationActionCreators.saveCityList(cityList));}
 }
 
 export const settingCurrentWeather = (data) => {
@@ -93,6 +103,7 @@ export const settingFiveDayWeather = (fiveDayData) => {
 
 export const setDefaultCity = (city) => {
     return (dispatch) => {
+        console.log(city)
         const cityName = city.name;
         dispatch(setDefaultCityName(cityName))
         const lat = city.geometry.lat;

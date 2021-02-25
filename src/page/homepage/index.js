@@ -11,37 +11,35 @@ import cookie from 'react-cookies'
 
 class HomePage extends Component {
     componentDidMount() {
-        if (cookie.load("cityList")){
-            const citylist = cookie.load("cityList")
-            this.props.loadingCookiesCityList(citylist);
-        }
+
+        this.props.loadingCookiesCityList();
     }
 
-    background(){
+    background() {
         switch (this.props.home_display_main) {
             case "Clear":
                 return <div className="homePage-bgimg default-bg"></div>;
-                
+
             case "Clouds":
                 return <div className="homePage-bgimg clouds-bg"></div>;
-                
+
             case "Mist":
                 return <div className="homePage-bgimg mist-bg"></div>;
-                
+
             case "Rain":
                 return <div className="homePage-bgimg rainy-bg"></div>;
-                
+
             case "Snow":
                 return <div className="homePage-bgimg snowy-bg"></div>;
-                
+
             case "Haze":
                 return <div className="homePage-bgimg haze-bg"></div>;
-                
+
             case "Wind":
                 return <div className="homePage-bgimg windy-bg"></div>;
             case "Storm":
                 return <div className="homePage-bgimg storm-bg"></div>;
-                
+
             default:
                 break;
         }
@@ -66,16 +64,16 @@ const mapStateToProps = (state) => {
     return {
         default_city_list: state.getIn(['location', 'default_city_list']).toJS(),
         home_display_city: state.getIn(['homepage', 'home_display_city']),
-        home_display_main:currentWeather.main,
-        
+        home_display_main: currentWeather.main,
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadingCookiesCityList(citylist) {
-            console.log(citylist)
-            dispatch(actionCreators.loadingCookiesCityList(citylist))
+        loadingCookiesCityList() {
+            console.log()
+            dispatch(actionCreators.loadingCookiesCityList())
         },
         setDefaultCity(city) {
             dispatch(actionCreators.setDefaultCity(city));
