@@ -66,7 +66,8 @@ export const getCityListWithWeather = () => {
 export const citySearch = (data) => {
     return (dispatch) => {
         dispatch(inputCityChange(data))
-        let path = "https://api.opencagedata.com/geocode/v1/json?q=Rua+Cafel%C3%A2ndia%2C+Carapicu%C3%ADba%2C+" + data + "&key=73bb9025ce93477e984d47732d9edeea&pretty=1&language=en";
+        console.log(data)
+        let path = "https://api.opencagedata.com/geocode/v1/json?q=URI-ENCODED-" + data + "&key=24af578530cd40c19a1ac3fc3e7ca782";
         axios.get(path).then((res) => {
             if (res.data.results[0]) {
                 dispatch(citySearchDisplay(res.data.results))
